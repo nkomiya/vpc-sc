@@ -11,6 +11,10 @@
             - [IP アドレスの許容](#ip-アドレスの許容)
             - [User Account の許容](#user-account-の許容)
         - [アクセスレベルの割当](#アクセスレベルの割当)
+        - [アクセスレベルの割当解除](#アクセスレベルの割当解除)
+            - [特定のアクセスレベルの割当を解除する](#特定のアクセスレベルの割当を解除する)
+            - [全てのアクセスレベルの割当を解除する](#全てのアクセスレベルの割当を解除する)
+        - [アクセスレベルの削除](#アクセスレベルの削除)
 
 <!-- /TOC -->
 
@@ -56,4 +60,37 @@ $ LEVELS=...
 
 $ gcloud access-context-manager perimeters update ${PERIMETER} \
     --add-access-levels ${LEVELS}
+```
+
+### アクセスレベルの割当解除
+
+#### 特定のアクセスレベルの割当を解除する
+
+```bash
+# サービス境界
+$ PERIMETER=...
+# アクセスレベルレベル名 (カンマ区切り)
+$ LEVELS=...
+
+$ gcloud access-context-manager perimeters update ${PERIMETER} \
+    --remove-access-levels ${LEVELS}
+```
+
+#### 全てのアクセスレベルの割当を解除する
+
+```bash
+# サービス境界
+$ PERIMETER=...
+
+$ gcloud access-context-manager perimeters update ${PERIMETER} \
+    --clear-access-levels
+```
+
+### アクセスレベルの削除
+
+```bash
+# アクセスレベルレベル名
+$ LEVEL=...
+
+$ gcloud access-context-manager levels delete ${LEVEL}
 ```
